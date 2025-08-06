@@ -1,4 +1,5 @@
 // apps/auth-service/src/index.js
+require("module-alias/register");
 const express = require("express");
 const connectDB = require("../../../libs/database/database");
 const redisClient = require("../../../libs/database/redis");

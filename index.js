@@ -1,9 +1,10 @@
+require('module-alias/register'); 
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const connectDB = require("./config/db");
-const redis = require("./config/redis");
+const connectDB = require("@@/database/database");
+const redis = require("@@/database/redis");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
