@@ -1,15 +1,16 @@
 // apps/auth-service/src/index.js
 require("module-alias/register");
+require("dotenv").config();
 const express = require("express");
-const connectDB = require("../../../libs/database/database");
-const redisClient = require("../../../libs/database/redis");
+const connectDB = require("@@/database/database");
+const redisClient = require("@@/database/redis");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-require("dotenv").config();
 
 app.use(express.json());
+console.log("🔍 MONGO_URI:", process.env.MONGO_URI); // Debug
 
 // Connect to MongoDB
 connectDB();
