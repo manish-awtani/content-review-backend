@@ -5,8 +5,14 @@ exports.saveContent = async ({ title, body, media, userId }) => {
     title,
     body,
     media,
-    createdBy: userId,
+    // userId,
+    createdBy,
   });
 
-  return await content.save();
+  const savedContent = await content.save();
+
+  // Push to BullMQ for AI moderation
+  await contentModerationQueue.add("moderateContent", { contentId: savedContent._id });
+
+  return savedContent;
 };
